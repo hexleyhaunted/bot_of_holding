@@ -1,7 +1,9 @@
-const {replyOnChannel, getRandomExclamation} = require("../../message");
+const {replyOnChannel, getRandomExclamation, reactToMessage} = require("../../message");
 const {hasAnIntegerValue} = require("../../utils")
+const {money, star} = require("../../emojis");
 
 const convert = async (msg, commandArray) => {
+    await reactToMessage(msg, money);
     const coins = getCoins(commandArray);
     const split = getSplit(commandArray);
     const coinString = getCoinsObjAsString(coins);

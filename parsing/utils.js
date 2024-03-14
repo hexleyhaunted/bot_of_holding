@@ -14,9 +14,14 @@ const getCommandArray = (text) => {
     return normaliseText(text)?.split(" ");
 }
 
+const askedNicely = (commandArray) => {
+    return commandArray.includes("please") || commandArray.includes("kindly")
+}
+
 module.exports = {
     isBohCommand,
     isConvertCommand,
     normaliseText,
-    getCommandArray
+    getCommandArray,
+    askedNicely
 }
