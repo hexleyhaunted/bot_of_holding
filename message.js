@@ -1,4 +1,5 @@
-const {questionMark} = require("./emojis");
+const {questionMark, cross} = require("./emojis");
+const {getRandomItemFromArray} = require("./utils");
 
 const replyOnChannel = async (msg, reply) => {
     await msg.channel.createMessage(reply);
@@ -17,9 +18,26 @@ const confusedReplyOnChannel = async (msg, reply) => {
     await replyOnChannel(msg, reply);
 }
 
+const errorReplyOnChannel = async (msg, reply) => {
+    await reactToMessage(msg, cross);
+    await replyOnChannel(msg, reply);
+}
+
+const defaultErrorResponse = async (msg) => {
+    await reactToMessage(msg, cross);
+    await replyOnChannel(msg, `${getRandomExpletive()} Sorry, I messed that one up. Maybe try again?`);
+}
+
+const getRandomExpletive = () => {
+    const expletives = ["Erk!", "Crumbs!", "Biscuits!", "Jinkies!", "Zoinks!", "Oh Stars!", "Whoops!"];
+    return getRandomItemFromArray(expletives);
+}
+
 module.exports = {
     replyOnDM,
     reactToMessage,
     replyOnChannel,
-    confusedReplyOnChannel
+    confusedReplyOnChannel,
+    errorReplyOnChannel,
+    defaultErrorResponse
 }
