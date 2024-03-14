@@ -1,7 +1,7 @@
 const eris = require("eris");
+require("dotenv").config();
 
-const token = "MTIxNzc4NzIyNzA5NTA0MDE1NA.GfJj4l.JhEyk6k1iF7XslvhG60U0Z7AkfyetZ28D5AwRU";
-const bot = new eris.Client(token);
+const bot = new eris.Client(process.env.TOKEN);
 
 bot.on("ready", () => {
     console.log("Connected");
