@@ -1,4 +1,12 @@
 module.exports = {
     star: "🌟",
-    questionMark: "❓"
+    questionMark: "❓",
+    skull: "💀",
+    laugh: "😄",
+    celebrate: "🥳",
+    heart: "❤",
+    cross: "❌",
+    present: "🎁",
+    money: "💰",
+    hug: "🤗"
 }
