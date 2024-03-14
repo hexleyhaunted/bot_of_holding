@@ -33,11 +33,17 @@ const getRandomExpletive = () => {
     return getRandomItemFromArray(expletives);
 }
 
+const getRandomExclamation = () => {
+    const exclamations = ["Cool!", "Grand!", "Groovy!", "Magic!"];
+    return getRandomItemFromArray(exclamations);
+}
+
 module.exports = {
     replyOnDM,
     reactToMessage,
     replyOnChannel,
     confusedReplyOnChannel,
     errorReplyOnChannel,
-    defaultErrorResponse
+    defaultErrorResponse,
+    getRandomExclamation
 }
