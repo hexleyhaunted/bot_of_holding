@@ -1,5 +1,6 @@
 const eris = require("eris");
 require("dotenv").config();
+const {star, questionMark} = require("./emojis");
 
 const bot = new eris.Client(process.env.TOKEN);
 
@@ -8,21 +9,15 @@ bot.on("ready", () => {
 });
 
 bot.on("messageCreate", async(msg) => {
-    // const botWasMentioned = msg.mentions.find(mentionedUser => mentionedUser.id === bot.user.id);
-    // if(botWasMentioned) {
-    //     try {
-    //         await msg.channel.createMessage("Present");
-    //     } catch (err) {
-    //         console.warn("Failed to respond to mention");
-    //         console.warn(err);
-    //     }
-    // }
     const content = msg.content;
     if (!content.startsWith("boh")) {
         return;
     } else {
         try {
+            await msg.addReaction(star);
+            await msg.addReaction(questionMark);
             await msg.channel.createMessage("Present");
+            //await (await msg.author.getDMChannel()).createMessage("Hello");
         } catch (err) {
             console.warn("Failed to respond to mention");
             console.warn(err);
