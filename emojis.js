@@ -8,5 +8,6 @@ module.exports = {
     cross: "❌",
     present: "🎁",
     money: "💰",
-    hug: "🤗"
+    hug: "🤗",
+    thinking: "🤔"
 }
