@@ -6,7 +6,8 @@
   "scripts": {
     "save": "git add . && git commit -m \"quicksave\" && git push -u origin HEAD",
     "start": "pm2 stop index.js && pm2 start index.js",
-    "stop": "pm2 stop index.js"
+    "stop": "pm2 stop index.js",
+    "dev": "node index.js"
   },
   "keywords": [],
   "author": "",

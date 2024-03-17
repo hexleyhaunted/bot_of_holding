@@ -3,10 +3,10 @@ const {errorReplyOnChannel, defaultErrorResponse} = require("./message");
 
 const getJson = (filename, serverId) => {
     const filePath = `./jsonData/${filename}${serverId}`;
-    let jsonObj = {};
+    let jsonObj;
     try {
         jsonObj = require(filePath);
-    } catch (e) {console.log(e)}
+    } catch (e) {}
     return jsonObj;
 }
 

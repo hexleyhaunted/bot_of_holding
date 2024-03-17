@@ -1,7 +1,8 @@
-const { isBohCommand, isConvertCommand, getCommandArray, askedNicely} = require("./utils");
+const { isBohCommand, isConvertCommand, getCommandArray, askedNicely, isStashCommand} = require("./utils");
 const { convert } = require("./commands/convert");
 const {reactToMessage} = require("../message");
 const {star, heart} = require("../emojis");
+const {stash} = require("./commands/stash");
 
 const parse = async (msg) => {
     const text = msg?.content;
@@ -17,6 +18,9 @@ const parse = async (msg) => {
 
     if(isConvertCommand(commandArray)) {
         await convert(msg, commandArray);
+    }
+    else if(isStashCommand(commandArray)) {
+        await stash(msg, commandArray);
     }
 }
 
