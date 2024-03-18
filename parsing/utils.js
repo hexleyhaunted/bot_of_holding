@@ -1,6 +1,6 @@
 const {hasAnIntegerValue} = require("../utils");
 const isBohCommand = (text) => {
-    return text.startsWith("boh");
+    return text.toLowerCase().startsWith("boh");
 }
 
 const isConvertCommand = (commandArray) => {
@@ -9,6 +9,10 @@ const isConvertCommand = (commandArray) => {
 
 const isStashCommand = (commandArray) => {
     return commandArray.includes("stash");
+}
+
+const isHelpCommand = (commandArray) => {
+    return commandArray.includes("help");
 }
 
 const normaliseText = (text) => {
@@ -105,5 +109,6 @@ module.exports = {
     getCoinsObjAsString,
     convertCpToHighestValueCoins,
     convertCoinsToCp,
-    simplifyCoinsToHighestValue
+    simplifyCoinsToHighestValue,
+    isHelpCommand
 }

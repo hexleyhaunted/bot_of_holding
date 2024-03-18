@@ -1,7 +1,20 @@
-> The `convert` command takes an array of coin values and an optional number of ways to split the result, and converts it up to the highest common coin values split x ways.
-> The order of the coins doesn't matter and coin values can be repeated.
-> If you omit the split part of the command it'll just assume that you want to split the result 1 way.
+
+> The `convert` command lets you convert a jumble of coins into the highest possible value coins.
+> - the `split` command lets you split the result between members of the party.
+> - The order of the coins doesn't matter and coin values can be repeated.
+> - The result only uses common coins: gp, sp and cp.
+> - If you omit the split part of the command. it'll just assume that you want to split the result 1 way.
 > Example commands:
 > `boh convert 12gp 10sp 1ep split 3 ways`
 > `boh convert 12gp 10sp 1ep 5gp 2gp`
 > `boh convert 500cp please`
+
+> The "Stash" is a virtual bag of holding, used for storing items and selling them later.
+> - The Stash is linked to the channel, so each user doesn't get a separate stash, it's shared between the party.
+>
+> The `stash` command lets you put an item into the stash.
+> - Every item requires a name and a value.
+> - Added items have their value converted to the smallest number of common coins. (150sp becomes 15gp for example).
+> Example commands:
+> `boh stash copper dragon figurine worth 210gp 15sp`
+> `boh stash platinum amulet worth 150pp`
