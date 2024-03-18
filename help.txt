@@ -18,3 +18,7 @@
 > Example commands:
 > `boh stash copper dragon figurine worth 210gp 15sp`
 > `boh stash platinum amulet worth 150pp`
+>
+> The `show stash` command lets you view all of your stashed items.
+> Example command:
+> `boh show stash`

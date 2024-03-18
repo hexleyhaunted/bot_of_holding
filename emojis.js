@@ -9,5 +9,8 @@ module.exports = {
     present: "🎁",
     money: "💰",
     hug: "🤗",
-    thinking: "🤔"
+    thinking: "🤔",
+    gem: "💎",
+    scream: "😱",
+    ghost: "👻"
 }

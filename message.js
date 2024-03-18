@@ -45,5 +45,6 @@ module.exports = {
     confusedReplyOnChannel,
     errorReplyOnChannel,
     defaultErrorResponse,
-    getRandomExclamation
+    getRandomExclamation,
+    getRandomExpletive
 }
