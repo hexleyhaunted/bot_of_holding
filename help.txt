@@ -1,2 +1,7 @@
-testing text file
-this is `code data`
+> The `convert` command takes an array of coin values and an optional number of ways to split the result, and converts it up to the highest common coin values split x ways.
+> The order of the coins doesn't matter and coin values can be repeated.
+> If you omit the split part of the command it'll just assume that you want to split the result 1 way.
+> Example commands:
+> `boh convert 12gp 10sp 1ep split 3 ways`
+> `boh convert 12gp 10sp 1ep 5gp 2gp`
+> `boh convert 500cp please`
