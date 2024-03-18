@@ -1,7 +1,7 @@
 const {reactToMessage, confusedReplyOnChannel, replyOnChannel, getRandomExclamation} = require("../../message");
 const {present, thinking, star} = require("../../emojis");
 const {getCoins, simplifyCoinsToHighestValue, getCoinsObjAsString} = require("../utils");
-const {getJson, saveJson} = require("../../json");
+const {getJson, saveJson} = require("../../file");
 
 const stash = async (msg, commandArray) => {
     await reactToMessage(msg, present);

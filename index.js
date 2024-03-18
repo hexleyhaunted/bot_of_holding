@@ -1,6 +1,7 @@
 const eris = require("eris");
 require("dotenv").config();
 const {parse} = require("./parsing/index");
+const {getTextFileData} = require("./file");
 
 const bot = new eris.Client(process.env.TOKEN);
 

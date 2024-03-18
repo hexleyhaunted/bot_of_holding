@@ -16,7 +16,15 @@ const saveJson = async (filename, serverId, jsonObj) => {
     await fs.writeFile(filePath, data, (err) => {});
 }
 
+const getTextFileData = (filePath) => {
+    return new Promise((resolve, reject) => {fs.readFile(filePath, (err, data) => {
+        if(err) reject(err);
+        else resolve(data.toString())
+    })});
+}
+
 module.exports = {
     getJson,
-    saveJson
+    saveJson,
+    getTextFileData
 }
