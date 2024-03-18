@@ -1,6 +1,6 @@
-const {reactToMessage, confusedReplyOnChannel, replyOnChannel, getRandomExclamation} = require("../../message");
+const {reactToMessage, confusedReplyOnChannel, replyOnChannel, getRandomExclamation, getRandomExpletive} = require("../../message");
 const {present, thinking, star} = require("../../emojis");
-const {getCoins, simplifyCoinsToHighestValue, getCoinsObjAsString} = require("../utils");
+const {getCoins, simplifyCoinsToHighestValue, getCoinsObjAsString, getStash} = require("../utils");
 const {getJson, saveJson} = require("../../file");
 
 const stash = async (msg, commandArray) => {
@@ -8,11 +8,20 @@ const stash = async (msg, commandArray) => {
 
     if(!commandArray.includes("worth")) {
         await confusedReplyOnChannel(msg,
-            `Sorry, you missed out how much that was worth? ${thinking}\nLike this: \`boh stash gold figurine worth 1000gp\``
+            `${getRandomExpletive()}, you missed out how much that was worth ${thinking}\nLike this: \`boh stash gold figurine worth 1000gp\``
         );
     } else {
         const coinSection = commandArray.slice(commandArray.indexOf("worth") + 1);
         const coins = getCoins(coinSection);
+
+        const hasCoins = Object.keys(coins).length > 0;
+        if(!hasCoins) {
+            await confusedReplyOnChannel(msg,
+                `${getRandomExpletive()}, you didn't give any usable coins ${thinking}\nLike this: \`boh stash gold figurine worth 1000gp\``
+            );
+            return;
+        }
+
         const convertedCoins = simplifyCoinsToHighestValue(coins);
         const itemName = getItemName(commandArray);
         const stash = getStash(msg);
@@ -25,10 +34,6 @@ const stash = async (msg, commandArray) => {
 
 const getItemName = (commandArray) => {
     return commandArray.slice(commandArray.indexOf("stash") + 1, commandArray.indexOf("worth")).join(" ");
-}
-
-const getStash = (msg) => {
-    return getJson("stash", msg.guildID) || [];
 }
 
 const saveStash = async (msg, stash) => {

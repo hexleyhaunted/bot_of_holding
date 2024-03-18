@@ -1,4 +1,5 @@
 const {hasAnIntegerValue} = require("../utils");
+const {getJson} = require("../file");
 const isBohCommand = (text) => {
     return text.toLowerCase().startsWith("boh");
 }
@@ -8,7 +9,11 @@ const isConvertCommand = (commandArray) => {
 }
 
 const isStashCommand = (commandArray) => {
-    return commandArray.includes("stash");
+    return commandArray.length >= 2 && commandArray[1] === "stash";
+}
+
+const isShowStashCommand = (commandArray) => {
+    return commandArray.length >= 3 && commandArray[1] === "show" && commandArray[2] === "stash";
 }
 
 const isHelpCommand = (commandArray) => {
@@ -97,6 +102,9 @@ const simplifyCoinsToHighestValue = (coins) => {
     return convertCpToHighestValueCoins(convertCoinsToCp(coins));
 }
 
+const getStash = (msg) => {
+    return getJson("stash", msg.guildID) || [];
+}
 
 module.exports = {
     isBohCommand,
@@ -110,5 +118,7 @@ module.exports = {
     convertCpToHighestValueCoins,
     convertCoinsToCp,
     simplifyCoinsToHighestValue,
-    isHelpCommand
+    isHelpCommand,
+    isShowStashCommand,
+    getStash
 }
