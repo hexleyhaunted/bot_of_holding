@@ -12,5 +12,6 @@ module.exports = {
     thinking: "🤔",
     gem: "💎",
     scream: "😱",
-    ghost: "👻"
+    ghost: "👻",
+    crying: "😭"
 }

@@ -1,4 +1,4 @@
-const {hasAnIntegerValue} = require("../utils");
+const {hasAnIntegerValue, hasANegativeValue} = require("../utils");
 const {getJson} = require("../file");
 const isBohCommand = (text) => {
     return text.toLowerCase().startsWith("boh");
@@ -38,7 +38,7 @@ const getCoins = (commandArray) => {
         const endSegment = part.substring(part.length - 2);
         const looksLikeACoin = isACoinName(endSegment);
         const valueSegment = part.substring(0, part.length - 2);
-        const hasAValue = hasAnIntegerValue(valueSegment);
+        const hasAValue = hasAnIntegerValue(valueSegment) && !hasANegativeValue(valueSegment);
         const isACoin = looksLikeACoin && hasAValue;
         if(isACoin) {
             try {

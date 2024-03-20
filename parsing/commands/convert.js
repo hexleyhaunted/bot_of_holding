@@ -1,12 +1,24 @@
 const {replyOnChannel, getRandomExclamation, reactToMessage} = require("../../message");
 const {hasAnIntegerValue} = require("../../utils")
-const {money, star, thinking} = require("../../emojis");
+const {money, star, thinking, ghost, crying} = require("../../emojis");
 const {getCoins, getCoinsObjAsString, convertCoinsToCp, convertCpToHighestValueCoins} = require("../utils");
 
 const convert = async (msg, commandArray) => {
     await reactToMessage(msg, money);
     const coins = getCoins(commandArray);
     const split = getSplit(commandArray);
+
+    if(split === 0) {
+        await replyOnChannel(msg, `Nope. nope nope nope nope.`);
+        await replyOnChannel(msg, `Nope.`);
+        return;
+    }
+
+    if(split < 0) {
+        await replyOnChannel(msg, `This will literally give you negative money. Please stop. ${crying}`);
+        return;
+    }
+
     const coinString = getCoinsObjAsString(coins);
     await replyOnChannel(msg, `${getRandomExclamation()} So you want me to convert ${coinString} and split it ${split} ways?`);
     const totalCp = convertCoinsToCp(coins);
